@@ -2,6 +2,7 @@
 import { memo, useCallback, useState } from 'react'
 import { Pencil, Trash2, Check } from 'lucide-react'
 import { Todo } from '@/types/todo'
+import Button from './Button'
 
 type TodoItemProps = {
   todo: Todo
@@ -39,30 +40,27 @@ const TodoItem = memo(({ todo, onDelete, onUpdate }: TodoItemProps) => {
       )}
 
       {isEditing ? (
-        <button
-          type="button"
+        <Button
           onClick={handleSave}
           className="p-2 rounded-lg text-green-400 hover:bg-[#1e3a5f] transition-colors"
         >
           <Check size={16} />
-        </button>
+        </Button>
       ) : (
-        <button
-          type="button"
+        <Button
           onClick={() => setIsEditing(true)}
           className="p-2 rounded-lg text-[#4a90d9] hover:bg-[#1e3a5f] transition-colors"
         >
           <Pencil size={16} />
-        </button>
+        </Button>
       )}
 
-      <button
-        type="button"
+      <Button
         onClick={handleDelete}
         className="p-2 rounded-lg text-[#ff6b35] hover:bg-[#2a1a0f] transition-colors"
       >
         <Trash2 size={16} />
-      </button>
+      </Button>
     </div>
   )
 })
